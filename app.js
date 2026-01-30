@@ -20,11 +20,8 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
-// redirects 
-app.get('/about-us', (req, res) => {
-
-    res.redirect('/about');
-
+app.get('/blogs/create', (req, res) => {
+    res.render('create');
 });
 
 // 404 page 
