@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 
 // express app
 const app = express();
@@ -9,6 +10,9 @@ app.set('view engine', 'ejs');
 // listen for requests
 app.listen(3000);
 
+// middleware & static files
+app.use(express.static('public'));
+app.use((morgan('dev')));
 
 // render home
 app.get('/', (req, res) => {
