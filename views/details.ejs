@@ -16,6 +16,19 @@
         </div>
 
         <%- include("./partials/footer.ejs") %>
-        
+
+        <script>
+            const removeBlog = document.querySelector('a.delete');
+            removeBlog.addEventListener('click', (e) => {
+                const endpoint = `/blogs/${removeBlog.dataset.doc}`;
+
+                fetch(endpoint, {
+                    method: 'DELETE'
+                })
+                .then((response) => response.json())
+                .then(data => window.location.href = data.redirect)
+                .catch(err => console.log(err));
+            });
+        </script>
     </body>
 </html>
