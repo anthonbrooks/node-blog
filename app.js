@@ -10,7 +10,7 @@ const dbURI = 'mongodb+srv://anthonybrooks226_db_user:HalupOZWlpWhGxoi@cluster0.
 mongoose.connect(dbURI)
     // listen for requests after database connection
     .then(() => app.listen(3000))
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -33,10 +33,10 @@ app.get('/about', (req, res) => {
 // blog routes
 app.get('/blogs', (req, res) => {
     Blog.find().sort( { createdAt: -1 })
-        .then((result) => {
+        .then(result => {
             res.render('index', { title: 'All Blogs', blogs: result  })
         })
-        .catch((err) => {
+        .catch(err => {
             console.log(err);
         })
 });
@@ -45,8 +45,19 @@ app.post('/blogs', (req, res) => {
     const blog = new Blog(req.body);
 
     blog.save()
-        .then((result) => {
+        .then(result => {
             res.redirect('/blogs');
+        })
+});
+
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findById(id)
+        .then(result => {
+            res.render('details', { blog: result, title: 'Blog Details'})
+        })
+        .catch(err => {
+            console.log(err);
         })
 });
 
