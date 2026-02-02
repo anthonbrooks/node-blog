@@ -4,7 +4,7 @@ This is a blog that I built to begin learning nodeJS and expressJS.
 
 **Link to project:** https://
 
-![Project Screenshot](images/.png)
+![Project Screenshot](images/node-blog-demo.png)
 
 ## How It's Made:
 
