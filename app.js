@@ -2,11 +2,13 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
+require('dotenv').config();
+const apiKey = process.env.APIKEY;
 
 // express app
 const app = express();
 
-const dbURI = 'mongodb+srv://anthonybrooks226_db_user:HalupOZWlpWhGxoi@cluster0.hy35ayb.mongodb.net/?appName=Cluster0';
+const dbURI = apiKey;
 mongoose.connect(dbURI)
     // listen for requests after database connection
     .then(() => app.listen(3000))
