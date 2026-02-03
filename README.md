@@ -29,3 +29,5 @@ Node is used to create controllers to render each page and every new blog that i
 I learned a lot about MVC design patterns. I split the views up into partials. The Models for the blog objects are clearly defined. Lastly Contollers are used for routing to blogs and different pages in the blog. 
 
 With Express I learned how to render dynamic content from the mongo database. Learning how to properly render pages and route with Node has been fun. Node and Express are powerful tool for creating dynamic sites. I plan to continue learning these technologies and to implement accounts and comments on blog posts in the future. 
+
+I also learned how to hide API keys with .env and .gitignore.
