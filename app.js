@@ -9,11 +9,17 @@ const apiKey = process.env.APIKEY;
 const app = express();
 
 const dbURI = apiKey;
-mongoose
-  .connect(dbURI)
-  // listen for requests after database connection
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err));
+const connectDB = require("./lib/mongodb");
+
+app.use(async (req, res, next) => {
+  try {
+    await connectDB(process.env.APIKEY);
+    next();
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Database connection error");
+  }
+});
 
 // register view engine
 app.set("view engine", "ejs");
